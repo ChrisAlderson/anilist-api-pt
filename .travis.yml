@@ -1,15 +1,15 @@
 sudo: false
-
 language: node_js
-
 node_js:
-  - 6
-  - 7
-
+- 6
+- 7
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 install:
-  - npm i -g npm@latest
-  - npm install
+- npm i -g npm@latest
+- npm install
+env:
+  global:
+  - secure: OJYxxGHOgejvKk/XhMtEuAoJ34Ek50bN+dBzUHn2oPH/UD3dh0HawcqwJfrjNZEIuP5s8vQEMi4mQvu9TqVOlSGweEwxCOyolJkKpw2fxzVLupOoOlVaxQTC1pwC4zhVwRVkKgaTeWKkB/8jbhabcxuzHHovyR5YTxVcg8e+UadUFDc6Jcf+OqBr2EnaPtIHIO6tvnqJJE9LtIeUMNfApqUhCzg5YbR43eJYiHtjux+yMZXDQrQO/Y/WW4N8GrxOe4Ya3U6WI4V5I1LTpAZhL4ukRa0MlBLmdPq6fmIx+33QgUk4Tg3IvLX3mdwZ0W0cPfNG8pL+QsPr9DJX+E4bE2EYj5Cgmd4V8Z/LfHbtz2hr0fE5FOVuEN4mpGgmkBgjf7+ov9cn3jAnQF2gCyM8Io5+PVUV6hRZgItQ2rjp1DRA4q8PFleba/njqTCQ6Om3AH7I5xF08EzBGATM4mjE5Ll5iWYoyYNDRXUdsdK7Ep7+JVa3pGhzCiI/5I7s34NHCuEx3wumjgAQ/2DVNtpDGU9RvFMTSamHmAj1qdsCee12HqfD4i56ZH+ksWmnHnxMZX1FIGlcpJBKeFxiTs5kNsoGH/tZUYPqHeOPYg1R70XBtKp8mGKsaHDnPNpG+Ehtarn1/E/cU4+6A245DUHj+xKBSGDOHScTJBuUu7t7h8g=
+  - secure: E6ktCEpRHg61ZoWYnRbp1+ZXweLb64dO4mpNiGoBhwjIWFQ4zmFNdHN6AcRQczP1F8wfYtw0au5E4e+NDAAHLNJRx3bwwhfCgzy19sPK7tiyvELoEpB39YWFCfX32fAzqK9WtWR/vPdMgGCD8h9jiZZWQJjPeKsSyo3wcQ1PGCpGWZs1L+t21kJ6H5hVb95LCJtRI0PLpDHjI7BLEnN92sNppL3Ioyg5uzP7wRpG7Sz62Xcyj+lQJ+CHuZDAax92aK2fSaXiCfx6mDRG/EOb751ehSXHlv5LsykaOypV+KbTt68xxSofEOF3yU1CO+77beLeWgrC3btGDEJEpH5/4IlcGbaA84/HxgP7sVOpCIMVNMI7ZIxdEMkAAokg8REUXL2GUfwEWL0DHLMOP2sF4zdZr4IiZCbCnJGyxsLT+Flq5v5DaIobzY00Lbtid98t7mOuimMgfrTSA6T69pMOUnungP4hZW034/5PpjZH6E0ud0jsm6M/B6JhS0a/Drz/CdhiFoGThaPciNNlUoCADkClU/+CunBsCn8jW/qHYsfmCXRFYHT3ujPUN4EqThvcnLyRZE4Es22mAUa2z8gReZA8wWvujRsABHjIH9YRHFkuKle+yik5J+Q9aW3VbMm0QahaGfKjyE3pLcmOzWTjuJmpW5A4Prfv0dC6LETjSXg=
