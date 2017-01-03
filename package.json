@@ -1,0 +1,29 @@
+{
+  "name": "anilist-api-pt",
+  "version": "1.0.0",
+  "description": "An AniList API to get metadata for PT",
+  "dependencies": {
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha --timeout 15000 --reporter spec"
+  },
+  "engines": {
+    "node": ">=6.3.0"
+  },
+  "keywords": [
+    "anime",
+    "anilist",
+    "api"
+  ],
+  "main": "anilist-api-pt.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChrisAlderson/anilist-api-pt.git"
+  }
+}
