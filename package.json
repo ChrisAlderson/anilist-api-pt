@@ -1,7 +1,7 @@
 {
   "name": "anilist-api-pt",
   "version": "1.0.0",
-  "description": "An AniList API to get metadata for PT",
+  "description": "An AniList API wrapper for NodeJS.",
   "dependencies": {
     "request": "^2.79.0"
   },
