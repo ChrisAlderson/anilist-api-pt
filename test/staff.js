@@ -1,49 +1,44 @@
-'use strict';
+'use strict'
 
-const { assert } = require('chai');
-
-const AniListApi = require('../anilist-api-pt');
+const { expect } = require('chai')
+const AniListApi = require('../anilist-api-pt')
 
 describe('Staff', () => {
 
-	let anilistApi, id, page, query;
-	before(() => {
+  let anilistApi, id, query
+
+  before(done => {
     anilistApi = new AniListApi({
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET
-    });
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET
+    })
 
-    id = 95061;
-    page = 1;
-    query = 'Chiwa Saito';
-	});
+    id = 95061
+    query = 'Chiwa Saito'
 
-  it('auth', done => {
-    anilistApi.auth().then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
+    anilistApi.auth()
+      .then(res => done())
+      .catch(done)
+  })
 
-  it('getStaff', done => {
-    anilistApi.staff.getStaff(id || 95061).then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
+  it('should get a staff members', done => {
+    anilistApi.staff.getStaff(id).then(res => {
+      expect(res).to.be.an('object')
+      done()
+    }).catch(done)
+  })
 
-  it('getPage', done => {
-    anilistApi.staff.getPage(page || 1).then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
+  it('should get a page of staff members', done => {
+    anilistApi.staff.getPage().then(res => {
+      expect(res).to.be.an('object')
+      done()
+    }).catch(done)
+  })
 
-  it('searchStaff', done => {
-    anilistApi.staff.searchStaff(query || 'Chiwa Saito').then(res => {
-      assert.isArray(res);
-      done();
-    }).catch(err => done(err));
-  });
-
-});
+  it('should search for staff members', done => {
+    anilistApi.staff.searchStaff(query).then(res => {
+      expect(res).to.be.an('array')
+      done()
+    }).catch(done)
+  })
+})

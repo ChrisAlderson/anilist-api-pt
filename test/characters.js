@@ -1,49 +1,46 @@
-'use strict';
+'use strict'
 
-const { assert } = require('chai');
+const { expect } = require('chai')
 
-const AniListApi = require('../anilist-api-pt');
+const AniListApi = require('../anilist-api-pt')
 
 describe('Characters', () => {
 
-	let anilistApi, id, page, query;
-	before(() => {
+  let anilistApi, id, page, query
+
+  before(done => {
     anilistApi = new AniListApi({
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET
-    });
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET
+    })
 
-    id = 22037;
-    page = 1;
-    query = 'Hitagi Senjougahara';
-	});
+    id = 22037
+    page = 1
+    query = 'Hitagi Senjougahara'
 
-  it('auth', done => {
-    anilistApi.auth().then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
+    anilistApi.auth()
+      .then(res => done())
+      .catch(done)
+  })
 
-  it('getCharacters', done => {
-    anilistApi.characters.getCharacters(id || 22037).then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
+  it('shoudl get characters', done => {
+    anilistApi.characters.getCharacters(id).then(res => {
+      expect(res).to.be.an('object')
+      done()
+    }).catch(done)
+  })
 
-  it('getPage', done => {
-    anilistApi.characters.getPage(page || 1).then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
+  it('should get a page of characters', done => {
+    anilistApi.characters.getPage(page).then(res => {
+      expect(res).to.be.an('object')
+      done()
+    }).catch(done)
+  })
 
-  it('searchCharacters', done => {
-    anilistApi.characters.searchCharacters(query || 'Hitagi Senjougahara').then(res => {
-      assert.isArray(res);
-      done();
-    }).catch(err => done(err));
-  });
-
-});
+  it('should search for characters', done => {
+    anilistApi.characters.searchCharacters(query).then(res => {
+      expect(res).to.be.an('array')
+      done()
+    }).catch(done)
+  })
+})

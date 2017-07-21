@@ -1,49 +1,44 @@
-'use strict';
+'use strict'
 
-const { assert } = require('chai');
-
-const AniListApi = require('../anilist-api-pt');
+const { expect } = require('chai')
+const AniListApi = require('../anilist-api-pt')
 
 describe('Studio', () => {
 
-	let anilistApi, id, page, query;
-	before(() => {
+  let anilistApi, id, query
+
+  before(done => {
     anilistApi = new AniListApi({
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET
-    });
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET
+    })
 
-    id = 44;
-    page = 1;
-    query = 'Shaft';
-	});
+    id = 44
+    query = 'Shaft'
 
-  it('auth', done => {
-    anilistApi.auth().then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
+    anilistApi.auth()
+      .then(res => done())
+      .catch(done)
+  })
 
-  it('getStudio', done => {
-    anilistApi.studio.getStudio(id || 44).then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
+  it('should get a studio', done => {
+    anilistApi.studio.getStudio(id).then(res => {
+      expect(res).to.be.an('object')
+      done()
+    }).catch(done)
+  })
 
-  it('getPage', done => {
-    anilistApi.studio.getPage(page || 1).then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
+  it('should get a page of studios', done => {
+    anilistApi.studio.getPage().then(res => {
+      expect(res).to.be.an('object')
+      done()
+    }).catch(done)
+  })
 
-  it('searchStudio', done => {
-    anilistApi.studio.searchStudio(query || 'Shaft').then(res => {
-      assert.isArray(res);
-      done();
-    }).catch(err => done(err));
-  });
-
-});
+  it('should search for a studio', done => {
+    anilistApi.studio.searchStudio(query).then(res => {
+      expect(res).to.be.an('array')
+      done()
+    }).catch(done)
+  })
+})

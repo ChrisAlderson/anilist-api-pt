@@ -1,66 +1,65 @@
-'use strict';
+'use strict'
 
-const {	assert } = require('chai');
-
-const AniListApi = require('../anilist-api-pt');
+const { expect } = require('chai')
+const AniListApi = require('../anilist-api-pt')
 
 describe('Anime', () => {
 
-	let anilistApi, id, page, query;
-	before(() => {
-		anilistApi = new AniListApi({
-			client_id: process.env.CLIENT_ID,
-			client_secret: process.env.CLIENT_SECRET
-		});
+  let anilistApi, id, page, query
 
-		id = 5081;
-		page = 1;
-		query = 'Bakemonogatari';
-	});
+  before(done => {
+    console.warn = () => {}
+    anilistApi = new AniListApi({
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      debug: true
+    })
 
-  it('auth', done => {
-    anilistApi.auth().then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
+    id = 5081
+    page = 1
+    query = 'Bakemonogatari'
 
-  it('getAnime', done => {
-    anilistApi.anime.getAnime(id || 5081).then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
-
-  it('getPage', done => {
-    anilistApi.anime.getPage(page || 1).then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
-
-  it('getCharacters', done => {
-    anilistApi.anime.getCharacters(id || 5081).then(res => {
-      assert.isObject(res);
-      done();
-    }).catch(err => done(err));
-  });
-
-  it('getAiring', done => {
-    anilistApi.anime.getAiring(id || 5081).then(res => {
-      assert.isArray(res);
-      done();
-    }).catch(err => done(err));
-  });
-
-  it('getGenres', done => {
-    anilistApi.anime.getGenres().then(res => {
-      assert.isArray(res);
-      done();
-    }).catch(err => done(err));
+    anilistApi.auth()
+      .then(() => done())
+      .catch(done)
   })
 
-  it('browseAnime', done => {
+  it('should get an anime', done => {
+    anilistApi.anime.getAnime(id).then(res => {
+      expect(res).to.be.an('object')
+      done()
+    }).catch(done)
+  })
+
+  it('should get a page of animes', done => {
+    anilistApi.anime.getPage().then(res => {
+      expect(res).to.be.an('object')
+      done()
+    }).catch(done)
+  })
+
+  it('should get characters', done => {
+    anilistApi.anime.getCharacters(id).then(res => {
+      expect(res).to.be.an('object')
+      done()
+    }).catch(done)
+  })
+
+  it('should get airing list', done => {
+    anilistApi.anime.getAiring(id).then(res => {
+      expect(res).to.be.an('array')
+      done()
+    }).catch(done)
+  })
+
+  it('should get a list of genres', done => {
+    anilistApi.anime.getGenres().then(res => {
+      expect(res).to.be.an('array')
+      done()
+    }).catch(done)
+  })
+
+  it('should browse anime', done => {
     anilistApi.anime.browseAnime({
       year: 2009,
       season: 'summer',
@@ -72,18 +71,50 @@ describe('Anime', () => {
       order: 'desc',
       airing_data: true,
       full_page: true,
-      page: page || 1
+      page
     }).then(res => {
-      assert.isArray(res);
-      done();
-    }).catch(err => done(err));
-  });
+      expect(res).to.be.an('array')
+      done()
+    }).catch(done)
+  })
 
-  it('searchAnime', done => {
-    anilistApi.anime.searchAnime(query || 'Bakemonogatari').then(res => {
-      assert.isArray(res);
-      done();
-    }).catch(err => done(err));
-  });
+  it('should throw an error when trying to browse for anime', () => {
+    const { browseAnime } = anilistApi.anime
+    expect(browseAnime.bind(browseAnime, {
+      season: 'winter',
+      status: 'faulty' 
+    })).to.throw('faulty is not a valid value for status with seriesType: \'anime\'!')
+    expect(browseAnime.bind(browseAnime, {
+      season: 'faulty',
+      status: 'finished_airing'
+    })).to.throw('faulty is not a valid value for season!')
+    expect(browseAnime.bind(browseAnime, {
+      year: 'faulty',
+      season: 'winter', 
+      status: 'finished_airing'
+    })).to.throw('faulty is not a valid value for year!')
 
-});
+    expect(browseAnime.bind(browseAnime, {
+      type: 'faulty',
+      season: 'winter', 
+      status: 'finished_airing'
+    })).to.throw('faulty is not a valid value for type!')
+    expect(browseAnime.bind(browseAnime, {
+      sort: 'faulty',
+      season: 'winter', 
+      status: 'finished_airing'
+    })).to.throw('faulty is not a valid value for sort!')
+    expect(browseAnime.bind(browseAnime, {
+      order: 'faulty',
+      season: 'winter', 
+      status: 'finished_airing'
+    })).to.throw('faulty is not a valid value for order!')
+  })
+
+  it('should search for animes', done => {
+    anilistApi.anime.searchAnime(query).then(res => {
+      expect(res).to.be.an('array')
+      done()
+    }).catch(done)
+  })
+})

@@ -15,9 +15,9 @@ npm install --save anilist-api-pt
 
 ### Initialize
 ```js
-const AniListAPI = require('anilist-api-pt');
+const AniListAPI = require('anilist-api-pt')
 
-const anilistApi = new AniListAPI({client_id, client_secret});
+const anilistApi = new AniListAPI({clientId, clientSecret})
 ```
 
 ### Example usage
@@ -177,7 +177,7 @@ anilistApi.studio.searchStudio(query)
 
 MIT License
 
-Copyright (c) 2016 - anilist-api-pt - Released under the MIT license.
+Copyright (c) 2017 - anilist-api-pt - Released under the MIT license.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
