@@ -5,7 +5,9 @@
 [![Dependency Status](https://david-dm.org/ChrisAlderson/anilist-api-pt.svg)](https://david-dm.org/ChrisAlderson/anilist-api-pt)
 [![devDependency Status](https://david-dm.org/ChrisAlderson/anilist-api-pt/dev-status.svg)](https://david-dm.org/ChrisAlderson/anilist-api-pt#info=devDependencies)
 
-An [AniList API](https://anilist-api.readthedocs.io/en/latest/introduction.html) wrapper for NodeJS.
+An [AniList API](https://anilist-api.readthedocs.io/en/latest/introduction.html)
+wrapper for NodeJS. For more information on the API you can read their
+documentation [here](https://anilist-api.readthedocs.io/en/latest/introduction.html).
 
 ## Usage
 
