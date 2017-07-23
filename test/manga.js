@@ -3,11 +3,38 @@
 const { expect } = require('chai')
 const AniListApi = require('../anilist-api-pt')
 
+/** @test {Manga} */
 describe('Manga', () => {
-  let anilistApi, id, page, query
+  /**
+   * The AniListApi instance.
+   * @type {AniListApi}
+   */
+  let anilist
 
+  /**
+   * The id to test with.
+   * @type {number}
+   */
+  let id
+
+  /**
+   * The page to test with.
+   * @type {number}
+   */
+  let page
+
+  /**
+   * The query to test with.
+   * @type {Object}
+   */
+  let query
+
+  /**
+   * Hook for setting up the Manga tests.
+   * @type {Function}
+   */
   before(done => {
-    anilistApi = new AniListApi({
+    anilist = new AniListApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET
     })
@@ -16,41 +43,46 @@ describe('Manga', () => {
     page = 1
     query = 'Bakemonogatari'
 
-    anilistApi.auth()
+    anilist.auth()
       .then(res => done())
       .catch(done)
   })
 
+  /** @test {Manga#getManga} */
   it('should get a manga', done => {
-    anilistApi.manga.getManga(id).then(res => {
+    anilist.manga.getManga(id).then(res => {
       expect(res).to.be.an('object')
       done()
     }).catch(done)
   })
 
+  /** @test {Manga#getPage} */
   it('should get a page of mangas', done => {
-    anilistApi.manga.getPage().then(res => {
+    anilist.manga.getPage().then(res => {
       expect(res).to.be.an('object')
       done()
     }).catch(done)
   })
 
+  /** @test {Manga#getCharacters} */
   it('should get characters', done => {
-    anilistApi.manga.getCharacters(id).then(res => {
+    anilist.manga.getCharacters(id).then(res => {
       expect(res).to.be.an('object')
       done()
     }).catch(done)
   })
 
+  /** @test {Series#getGenres} */
   it('should get a list of genres', done => {
-    anilistApi.manga.getGenres().then(res => {
+    anilist.manga.getGenres().then(res => {
       expect(res).to.be.an('array')
       done()
     }).catch(done)
   })
 
+  /** @test {Manga#browseManga} */
   it('should browse manga', done => {
-    anilistApi.manga.browseManga({
+    anilist.manga.browseManga({
       year: 1997,
       season: 'summer',
       type: 'manga',
@@ -68,15 +100,19 @@ describe('Manga', () => {
     }).catch(done)
   })
 
+  /** @test {Manga#browseManga} */
   it('should throw an error when trying to browse for manga', () => {
-    const { browseManga } = anilistApi.manga
+    const { browseManga } = anilist.manga
+
     expect(browseManga.bind(browseManga, {
       season: 'winter',
-      status: undefined
-    })).to.throw('undefined is not a valid value for status with seriesType: \'manga\'!')
+      status: 'faulty'
+    })).to.throw('faulty is not a valid value for status with seriesType: \'manga\'!')
   })
+
+  /** @test {Manga#searchManga} */
   it('should search for mangas', done => {
-    anilistApi.manga.searchManga(query).then(res => {
+    anilist.manga.searchManga(query).then(res => {
       expect(res).to.be.an('array')
       done()
     }).catch(done)

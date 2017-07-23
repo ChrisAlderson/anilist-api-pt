@@ -1,44 +1,65 @@
 'use strict'
 
 const { expect } = require('chai')
-
 const AniListApi = require('../anilist-api-pt')
 
+/** @test {Characters} */
 describe('Characters', () => {
+  /**
+   * The AniListApi instance.
+   * @type {AniListApi}
+   */
+  let anilist
 
-  let anilistApi, id, page, query
+  /**
+   * The id to test with.
+   * @type {number}
+   */
+  let id
 
+  /**
+   * The query to test with.
+   * @type {Object}
+   */
+  let query
+
+  /**
+   * Hook for setting up the Characters tests.
+   * @type {Function}
+   */
   before(done => {
-    anilistApi = new AniListApi({
+    anilist = new AniListApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET
     })
 
     id = 22037
-    page = 1
     query = 'Hitagi Senjougahara'
 
-    anilistApi.auth()
+    anilist.auth()
       .then(res => done())
       .catch(done)
   })
 
+  /** @test {Characters#getCharacters} */
   it('shoudl get characters', done => {
-    anilistApi.characters.getCharacters(id).then(res => {
+    anilist.characters.getCharacter(id).then(res => {
       expect(res).to.be.an('object')
       done()
     }).catch(done)
   })
 
+  /** @test {Characters#getPage} */
   it('should get a page of characters', done => {
-    anilistApi.characters.getPage(page).then(res => {
+    anilist.characters.getPage().then(res => {
       expect(res).to.be.an('object')
       done()
     }).catch(done)
   })
 
+  /** @test {Characters#searchCharacters} */
   it('should search for characters', done => {
-    anilistApi.characters.searchCharacters(query).then(res => {
+    anilist.characters.searchCharacters(query).then(res => {
       expect(res).to.be.an('array')
       done()
     }).catch(done)

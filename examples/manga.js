@@ -1,25 +1,29 @@
 'use strict'
 
+// Import the necessary modules.
 const AniListApi = require('../anilist-api-pt')
 
+// Create a new instance of the module.
 const anilistApi = new AniListApi({
   client_id: process.env.CLIENT_ID,
   client_secret: process.env.CLIENT_SECRET
 })
 
+// Some values to be used by the example.
 const id = 44893
 const page = 1
 const query = 'Bakemonogatari'
 
+// Chain all the manga methods.
 anilistApi.auth().then(res => {
   console.log(res)
-  return anilistApi.manga.getManga(id || 44893)
+  return anilistApi.manga.getManga(id)
 }).then(res => {
   console.log(res)
-  return anilistApi.manga.getPage(page || 1)
+  return anilistApi.manga.getPage(page)
 }).then(res => {
   console.log(res)
-  return anilistApi.manga.getCharacters(id || 44893)
+  return anilistApi.manga.getCharacters(id)
 }).then(res => {
   console.log(res)
   return anilistApi.manga.browseManga({
@@ -40,6 +44,6 @@ anilistApi.auth().then(res => {
   return anilistApi.manga.getGenres()
 }).then(res => {
   console.log(res)
-  return anilistApi.manga.searchManga(query || 'Bakemonogatari')
-}).then(res => console.log(res))
+  return anilistApi.manga.searchManga(query)
+}).then(res => console.log())
   .catch(err => console.error(err))

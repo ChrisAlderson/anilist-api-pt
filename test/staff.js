@@ -3,12 +3,32 @@
 const { expect } = require('chai')
 const AniListApi = require('../anilist-api-pt')
 
+/** @test {Staff} */
 describe('Staff', () => {
+  /**
+   * The AniListApi instance.
+   * @type {AniListApi}
+   */
+  let anilist
 
-  let anilistApi, id, query
+  /**
+   * The id to test with.
+   * @type {number}
+   */
+  let id
 
+  /**
+   * The query to test with.
+   * @type {Object}
+   */
+  let query
+
+  /**
+   * Hook for setting up the Staff tests.
+   * @type {Function}
+   */
   before(done => {
-    anilistApi = new AniListApi({
+    anilist = new AniListApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET
     })
@@ -16,27 +36,30 @@ describe('Staff', () => {
     id = 95061
     query = 'Chiwa Saito'
 
-    anilistApi.auth()
+    anilist.auth()
       .then(res => done())
       .catch(done)
   })
 
+  /** @test {Staff#getStaff} */
   it('should get a staff members', done => {
-    anilistApi.staff.getStaff(id).then(res => {
+    anilist.staff.getStaff(id).then(res => {
       expect(res).to.be.an('object')
       done()
     }).catch(done)
   })
 
+  /** @test {Staff#getPage} */
   it('should get a page of staff members', done => {
-    anilistApi.staff.getPage().then(res => {
+    anilist.staff.getPage().then(res => {
       expect(res).to.be.an('object')
       done()
     }).catch(done)
   })
 
+  /** @test {Staff#searchStaff} */
   it('should search for staff members', done => {
-    anilistApi.staff.searchStaff(query).then(res => {
+    anilist.staff.searchStaff(query).then(res => {
       expect(res).to.be.an('array')
       done()
     }).catch(done)

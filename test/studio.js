@@ -3,12 +3,32 @@
 const { expect } = require('chai')
 const AniListApi = require('../anilist-api-pt')
 
+/** @test {Studio} */
 describe('Studio', () => {
+  /**
+   * The AniListApi instance.
+   * @type {AniListApi}
+   */
+  let anilist
 
-  let anilistApi, id, query
+  /**
+   * The id to test with.
+   * @type {number}
+   */
+  let id
 
+  /**
+   * The query to test with.
+   * @type {Object}
+   */
+  let query
+
+  /**
+   * Hook for setting up the Studio tests.
+   * @type {Function}
+   */
   before(done => {
-    anilistApi = new AniListApi({
+    anilist = new AniListApi({
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET
     })
@@ -16,27 +36,30 @@ describe('Studio', () => {
     id = 44
     query = 'Shaft'
 
-    anilistApi.auth()
+    anilist.auth()
       .then(res => done())
       .catch(done)
   })
 
+  /** @test {Studio#getStudio} */
   it('should get a studio', done => {
-    anilistApi.studio.getStudio(id).then(res => {
+    anilist.studio.getStudio(id).then(res => {
       expect(res).to.be.an('object')
       done()
     }).catch(done)
   })
 
+  /** @test {Studio#getPage} */
   it('should get a page of studios', done => {
-    anilistApi.studio.getPage().then(res => {
+    anilist.studio.getPage().then(res => {
       expect(res).to.be.an('object')
       done()
     }).catch(done)
   })
 
+  /** @test {Studio#searchStudio} */
   it('should search for a studio', done => {
-    anilistApi.studio.searchStudio(query).then(res => {
+    anilist.studio.searchStudio(query).then(res => {
       expect(res).to.be.an('array')
       done()
     }).catch(done)

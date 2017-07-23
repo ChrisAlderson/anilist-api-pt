@@ -17,7 +17,13 @@ npm install --save anilist-api-pt
 ```js
 const AniListAPI = require('anilist-api-pt')
 
-const anilistApi = new AniListAPI({clientId, clientSecret})
+const anilistApi = new AniListAPI({
+  clientId, // Your client id.
+  clientSecret, // Your client secret.
+  debug // Show extra output. Defaults to 'false'
+})
+
+
 ```
 
 ### Example usage
