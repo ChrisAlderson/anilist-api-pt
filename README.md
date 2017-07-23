@@ -18,7 +18,7 @@ npm install --save anilist-api-pt
 ```js
 const AniListAPI = require('anilist-api-pt')
 
-const anilistApi = new AniListAPI({
+const anilist = new AniListAPI({
   clientId, // Your client id.
   clientSecret, // Your client secret.
   debug // Show extra output. Defaults to 'false'
@@ -33,34 +33,44 @@ All the functions below will return a promise.
 
 #### Auth
 ```js
-anilistApi.auth()
+anilist.auth()
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 #### Anime
 
 **getAnime:**
 ```js
-anilistApi.anime.getAnime(id)
+anilist.anime.getAnime(id)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **getPage:**
 ```js
-anilistApi.anime.getPage(page)
+anilist.anime.getPage(page)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **getCharacters:**
 ```js
-anilistApi.anime.getCharacters(id)
+anilist.anime.getCharacters(id)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **getAiring:**
 ```js
-anilistApi.anime.getAiring(id)
+anilist.anime.getAiring(id)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **browseAnime:**
 ```js
-anilistApi.anime.browseAnime({
+anilist.anime.browseAnime({
   year: Number,
   season: String // winter, spring, summer, fall
   type: String, // tv, tv_short, movie, special, ova, ona, music, manga, novel, one_shot, doujin, manhua, manhwa
@@ -72,17 +82,22 @@ anilistApi.anime.browseAnime({
   airing_data: Boolean,
   full_page: Boolean,
   page: Number
-})
+}).then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **getGenres:**
 ```js
-anilistApi.anime.getGenres()
+anilist.anime.getGenres()
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **searchAnime:**
 ```js
-anilistApi.anime.searchAnime(query)
+anilist.anime.searchAnime(query)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 #### Characters
@@ -90,38 +105,50 @@ anilistApi.anime.searchAnime(query)
 **getCharacters:**
 ```js
 anilistApi.characters.getCharacters(id)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **getPage:**
 ```js
-anilistApi.characters.getPage(page)
+anilist.characters.getPage(page)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **searchCharacters:**
 ```js
-anilistApi.characters.searchCharacters(query)
+anilist.characters.searchCharacters(query)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 #### Manga
 
 **getManga:**
 ```js
-anilistApi.manga.getManga(id)
+anilist.manga.getManga(id)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **getPage:**
 ```js
-anilistApi.manga.getPage(page)
+anilist.manga.getPage(page)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **getCharacters:**
 ```js
-anilistApi.manga.getCharacters(id)
+anilist.manga.getCharacters(id)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **browseManga:**
 ```js
-anilistApi.manga.browseManga({
+anilist.manga.browseManga({
   year: Number,
   season: String // winter, spring, summer, fall
   type: String, // tv, tv_short, movie, special, ova, ona, music, manga, novel, one_shot, doujin, manhua, manhwa
@@ -133,51 +160,68 @@ anilistApi.manga.browseManga({
   airing_data: Boolean,
   full_page: Boolean,
   page: Number
-})
+}).then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **getGenres:**
 ```js
-anilistApi.manga.getGenres()
+anilist.manga.getGenres()
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **searchManga:**
 ```js
-anilistApi.manga.searchManga(query)
+anilist.manga.searchManga(query)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 #### Staff
 
 **getStaff:**
 ```js
-anilistApi.staff.getStaff(id)
+anilist.staff.getStaff(id)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **getPage:**
 ```js
-anilistApi.staff.getPage(page)
+anilist.staff.getPage(page)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **searchStaff:**
 ```js
-anilistApi.staff.searchStaff(query)
+anilist.staff.searchStaff(query)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 #### Studio
 
 **getStudio:**
 ```js
-anilistApi.studio.getStudio(id)
+anilist.studio.getStudio(id)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **getPage:**
 ```js
-anilistApi.studio.getPage(page)
+anilist.studio.getPage(page)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 **searchStudio:**
 ```js
-anilistApi.studio.searchStudio(query)
+anilist.studio.searchStudio(query)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
 ```
 
 # License
