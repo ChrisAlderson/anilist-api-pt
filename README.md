@@ -226,6 +226,13 @@ anilist.studio.searchStudio(query)
   .catch(err => console.error(err))
 ```
 
+## Testing
+
+You can run tests with the following npm command:
+```
+ $ CLIENT_ID=[Your client id] CLIENT_SECRET=[Your client secret] npm test
+```
+
 # License
 
 MIT License
