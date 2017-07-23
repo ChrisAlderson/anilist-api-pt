@@ -1,6 +1,7 @@
 # anilist-api-pt
 
-[![Build Status](https://travis-ci.org/ChrisAlderson/anilist-api-pt.svg?branch=master)]()
+[![Build Status](https://travis-ci.org/ChrisAlderson/anilist-api-pt.svg?branch=master)](https://travis-ci.org/ChrisAlderson/anilist-api-pt)
+[![Coverage Status](https://coveralls.io/repos/github/ChrisAlderson/anilist-api-pt/badge.svg?branch=master)](https://coveralls.io/github/ChrisAlderson/anilist-api-pt?branch=master)
 [![Dependency Status](https://david-dm.org/ChrisAlderson/anilist-api-pt.svg)](https://david-dm.org/ChrisAlderson/anilist-api-pt)
 [![devDependency Status](https://david-dm.org/ChrisAlderson/anilist-api-pt/dev-status.svg)](https://david-dm.org/ChrisAlderson/anilist-api-pt#info=devDependencies)
 
