@@ -4,7 +4,7 @@
 const AniListApi = require('../anilist-api-pt')
 
 // Create a new instance of the module.
-const anilistApi = new AniListApi({
+const anilist = new AniListApi({
   client_id: process.env.CLIENT_ID,
   client_secret: process.env.CLIENT_SECRET
 })
@@ -15,14 +15,14 @@ const page = 1
 const query = 'Hitagi Senjougahara'
 
 // Chain all the character methods.
-anilistApi.auth().then(res => {
+anilist.auth().then(res => {
   console.log(res)
-  return anilistApi.characters.getCharacters(id)
+  return anilist.characters.getCharacters(id)
 }).then(res => {
   console.log(res)
-  return anilistApi.characters.getPage(page)
+  return anilist.characters.getPage(page)
 }).then(res => {
   console.log(res)
-  return anilistApi.characters.searchCharacters(query)
+  return anilist.characters.searchCharacters(query)
 }).then(res => console.log(res))
   .catch(err => console.error(err))

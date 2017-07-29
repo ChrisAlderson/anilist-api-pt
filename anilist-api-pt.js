@@ -94,7 +94,10 @@ module.exports = class AniListApi {
    * @return {AniListApi} - New version of the module with the authentication
    * enabled.
    */
-  auth(clientId = AniListApi._clientId, clientSecret = AniListApi._clientSecret) {
+  auth(
+    clientId = AniListApi._clientId,
+    clientSecret = AniListApi._clientSecret
+  ) {
     return AniListApi._helper.post('auth/access_token', {
       grant_type: 'client_credentials',
       client_id: clientId,

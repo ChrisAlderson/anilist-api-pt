@@ -107,7 +107,9 @@ describe('Manga', () => {
     expect(browseManga.bind(browseManga, {
       season: 'winter',
       status: 'faulty'
-    })).to.throw('faulty is not a valid value for status with seriesType: \'manga\'!')
+    })).to.throw(
+      'faulty is not a valid value for status with seriesType: \'manga\'!'
+    )
   })
 
   /** @test {Manga#searchManga} */

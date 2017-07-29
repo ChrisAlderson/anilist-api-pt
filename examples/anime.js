@@ -44,9 +44,9 @@ anilist.auth().then(res => {
   })
 }).then(res => {
   console.log(res)
-  return anilistApi.anime.getGenres()
+  return anilist.anime.getGenres()
 }).then(res => {
   console.log(res)
-  return anilistApi.anime.searchAnime(query)
+  return anilist.anime.searchAnime(query)
 }).then(res => console.log(res))
   .catch(err => console.error(err))

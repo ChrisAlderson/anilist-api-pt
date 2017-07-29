@@ -4,7 +4,7 @@
 const AniListApi = require('../anilist-api-pt')
 
 // Create a new instance of the module.
-const anilistApi = new AniListApi({
+const anilist = new AniListApi({
   client_id: process.env.CLIENT_ID,
   client_secret: process.env.CLIENT_SECRET
 })
@@ -15,18 +15,18 @@ const page = 1
 const query = 'Bakemonogatari'
 
 // Chain all the manga methods.
-anilistApi.auth().then(res => {
+anilist.auth().then(res => {
   console.log(res)
-  return anilistApi.manga.getManga(id)
+  return anilist.manga.getManga(id)
 }).then(res => {
   console.log(res)
-  return anilistApi.manga.getPage(page)
+  return anilist.manga.getPage(page)
 }).then(res => {
   console.log(res)
-  return anilistApi.manga.getCharacters(id)
+  return anilist.manga.getCharacters(id)
 }).then(res => {
   console.log(res)
-  return anilistApi.manga.browseManga({
+  return anilist.manga.browseManga({
     year: 1997,
     season: 'summer',
     type: 'manga',
@@ -41,9 +41,9 @@ anilistApi.auth().then(res => {
   })
 }).then(res => {
   console.log(res)
-  return anilistApi.manga.getGenres()
+  return anilist.manga.getGenres()
 }).then(res => {
   console.log(res)
-  return anilistApi.manga.searchManga(query)
+  return anilist.manga.searchManga(query)
 }).then(res => console.log())
   .catch(err => console.error(err))

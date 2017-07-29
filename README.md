@@ -18,12 +18,12 @@ npm install --save anilist-api-pt
 
 ### Initialize
 ```js
-const AniListAPI = require('anilist-api-pt')
+const AniListApi = require('anilist-api-pt')
 
-const anilist = new AniListAPI({
+const anilist = new AniListApi({
   clientId, // Your client id.
   clientSecret, // Your client secret.
-  debug // Show extra output. Defaults to 'false'
+  debug // Show extra output. Defaults to 'false'.
 })
 
 
@@ -106,7 +106,7 @@ anilist.anime.searchAnime(query)
 
 **getCharacters:**
 ```js
-anilistApi.characters.getCharacters(id)
+anilist.characters.getCharacters(id)
   .then(res => console.log(res))
   .catch(err => console.error(err))
 ```

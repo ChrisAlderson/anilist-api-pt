@@ -117,7 +117,9 @@ describe('Anime', () => {
     expect(browseAnime.bind(browseAnime, {
       season: 'winter',
       status: 'faulty'
-    })).to.throw('faulty is not a valid value for status with seriesType: \'anime\'!')
+    })).to.throw(
+      'faulty is not a valid value for status with seriesType: \'anime\'!'
+    )
     expect(browseAnime.bind(browseAnime, {
       season: 'faulty',
       status: 'finished_airing'

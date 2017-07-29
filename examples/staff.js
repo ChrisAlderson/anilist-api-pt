@@ -4,7 +4,7 @@
 const AniListApi = require('../anilist-api-pt')
 
 // Create a new instance of the module.
-const anilistApi = new AniListApi({
+const anilist = new AniListApi({
   client_id: process.env.CLIENT_ID,
   client_secret: process.env.CLIENT_SECRET
 })
@@ -15,14 +15,14 @@ const page = 1
 const query = 'Chiwa Saito'
 
 // Chain all the staff methods.
-anilistApi.auth().then(res => {
+anilist.auth().then(res => {
   console.log(res)
-  return anilistApi.staff.getStaff(id)
+  return anilist.staff.getStaff(id)
 }).then(res => {
   console.log(res)
-  return anilistApi.staff.getPage(page)
+  return anilist.staff.getPage(page)
 }).then(res => {
   console.log(res)
-  return anilistApi.staff.searchStaff(query)
+  return anilist.staff.searchStaff(query)
 }).then(res => console.log(res))
   .catch(err => console.error(err))
