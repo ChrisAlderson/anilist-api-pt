@@ -1,7 +1,7 @@
-'use strict'
-
+// Import the necessary modules.
 const { expect } = require('chai')
-const AniListApi = require('../anilist-api-pt')
+
+const AniListApi = require('..')
 
 /** @test {Manga} */
 describe('Manga', () => {
@@ -101,15 +101,19 @@ describe('Manga', () => {
   })
 
   /** @test {Manga#browseManga} */
-  it('should throw an error when trying to browse for manga', () => {
-    const { browseManga } = anilist.manga
-
-    expect(browseManga.bind(browseManga, {
+  it('should throw an error when trying to browse for manga', done => {
+    anilist.manga.browseManga({
       season: 'winter',
       status: 'faulty'
-    })).to.throw(
-      'faulty is not a valid value for status with seriesType: \'manga\'!'
-    )
+    }).then(done)
+      .catch(err => {
+        expect(err).to.be.an('Error')
+        expect(err.message).to.equal(
+          'faulty is not a valid value for status with seriesType: \'manga\'!'
+        )
+
+        done()
+      })
   })
 
   /** @test {Manga#searchManga} */

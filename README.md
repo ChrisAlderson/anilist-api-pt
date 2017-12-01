@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/ChrisAlderson/anilist-api-pt.svg?branch=master)](https://travis-ci.org/ChrisAlderson/anilist-api-pt)
 [![Coverage Status](https://coveralls.io/repos/github/ChrisAlderson/anilist-api-pt/badge.svg?branch=master)](https://coveralls.io/github/ChrisAlderson/anilist-api-pt?branch=master)
 [![Dependency Status](https://david-dm.org/ChrisAlderson/anilist-api-pt.svg)](https://david-dm.org/ChrisAlderson/anilist-api-pt)
-[![devDependency Status](https://david-dm.org/ChrisAlderson/anilist-api-pt/dev-status.svg)](https://david-dm.org/ChrisAlderson/anilist-api-pt#info=devDependencies)
+[![devDependency Status](https://david-dm.org/ChrisAlderson/anilist-api-pt/dev-status.svg)](https://david-dm.org/ChrisAlderson/anilist-api-pt?type=dev)
 
 An [AniList API](https://anilist-api.readthedocs.io/en/latest/introduction.html)
 wrapper for NodeJS. For more information on the API you can read their
@@ -22,8 +22,7 @@ const AniListApi = require('anilist-api-pt')
 
 const anilist = new AniListApi({
   clientId, // Your client id.
-  clientSecret, // Your client secret.
-  debug // Show extra output. Defaults to 'false'.
+  clientSecret // Your client secret.
 })
 
 

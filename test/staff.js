@@ -1,7 +1,7 @@
-'use strict'
-
+// Import the necessary modules.
 const { expect } = require('chai')
-const AniListApi = require('../anilist-api-pt')
+
+const AniListApi = require('..')
 
 /** @test {Staff} */
 describe('Staff', () => {

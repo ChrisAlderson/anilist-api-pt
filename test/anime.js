@@ -1,7 +1,7 @@
-'use strict'
-
+// Import the necessary modules.
 const { expect } = require('chai')
-const AniListApi = require('../anilist-api-pt')
+
+const AniListApi = require('..')
 
 /** @test {Anime} */
 describe('Anime', () => {
@@ -34,11 +34,9 @@ describe('Anime', () => {
    * @type {Function}
    */
   before(done => {
-    console.warn = () => {}
     anilist = new AniListApi({
       clientId: process.env.CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET,
-      debug: true
+      clientSecret: process.env.CLIENT_SECRET
     })
 
     id = 5081
@@ -111,39 +109,93 @@ describe('Anime', () => {
   })
 
   /** @test {Anime#browseAnime} */
-  it('should throw an error when trying to browse for anime', () => {
-    const { browseAnime } = anilist.anime
-
-    expect(browseAnime.bind(browseAnime, {
+  it('should throw an error when trying to browse for anime', done => {
+    anilist.anime.browseAnime({
       season: 'winter',
       status: 'faulty'
-    })).to.throw(
-      'faulty is not a valid value for status with seriesType: \'anime\'!'
-    )
-    expect(browseAnime.bind(browseAnime, {
+    }).then(done)
+      .catch(err => {
+        expect(err).to.be.an('Error')
+        expect(err.message).to.equal(
+          'faulty is not a valid value for status with seriesType: \'anime\'!'
+        )
+
+        done()
+      })
+  })
+
+  /** @test {Anime#browseAnime} */
+  it('should throw an error when trying to browse for anime', done => {
+    anilist.anime.browseAnime({
       season: 'faulty',
       status: 'finished_airing'
-    })).to.throw('faulty is not a valid value for season!')
-    expect(browseAnime.bind(browseAnime, {
+    }).then(done)
+      .catch(err => {
+        expect(err).to.be.an('Error')
+        expect(err.message).to.equal('faulty is not a valid value for season!')
+
+        done()
+      })
+  })
+
+  /** @test {Anime#browseAnime} */
+  it('should throw an error when trying to browse for anime', done => {
+    anilist.anime.browseAnime({
       year: 'faulty',
       season: 'winter',
       status: 'finished_airing'
-    })).to.throw('faulty is not a valid value for year!')
-    expect(browseAnime.bind(browseAnime, {
+    }).then(done)
+      .catch(err => {
+        expect(err).to.be.an('Error')
+        expect(err.message).to.equal('faulty is not a valid value for year!')
+
+        done()
+      })
+  })
+
+  /** @test {Anime#browseAnime} */
+  it('should throw an error when trying to browse for anime', done => {
+    anilist.anime.browseAnime({
       type: 'faulty',
       season: 'winter',
       status: 'finished_airing'
-    })).to.throw('faulty is not a valid value for type!')
-    expect(browseAnime.bind(browseAnime, {
+    }).then(done)
+      .catch(err => {
+        expect(err).to.be.an('Error')
+        expect(err.message).to.equal('faulty is not a valid value for type!')
+
+        done()
+      })
+  })
+
+  /** @test {Anime#browseAnime} */
+  it('should throw an error when trying to browse for anime', done => {
+    anilist.anime.browseAnime({
       sort: 'faulty',
       season: 'winter',
       status: 'finished_airing'
-    })).to.throw('faulty is not a valid value for sort!')
-    expect(browseAnime.bind(browseAnime, {
+    }).then(done)
+      .catch(err => {
+        expect(err).to.be.an('Error')
+        expect(err.message).to.equal('faulty is not a valid value for sort!')
+
+        done()
+      })
+  })
+
+  /** @test {Anime#browseAnime} */
+  it('should throw an error when trying to browse for anime', done => {
+    anilist.anime.browseAnime({
       order: 'faulty',
       season: 'winter',
       status: 'finished_airing'
-    })).to.throw('faulty is not a valid value for order!')
+    }).then(done)
+      .catch(err => {
+        expect(err).to.be.an('Error')
+        expect(err.message).to.equal('faulty is not a valid value for order!')
+
+        done()
+      })
   })
 
   /** @test {Anime#searchAnime} */

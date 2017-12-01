@@ -1,7 +1,6 @@
-'use strict'
-
 // Import the necessary modules.
-const AniListApi = require('../anilist-api-pt')
+/* eslint-disable no-console */
+const AniListApi = require('..')
 
 // Create a new instance of the module.
 const anilist = new AniListApi({

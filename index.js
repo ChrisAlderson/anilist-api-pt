@@ -19,9 +19,8 @@ module.exports = class AniListApi {
    * @param {!Object} config={} - The configuration object of the module.
    * @param {!string} config.clientId - Your client id.
    * @param {!string} config.clientSecret - Your client secret.
-   * @param {?boolean} [config.debug=false] - Show extra output.
    */
-  constructor({clientId, clientSecret, debug = false} = {}) {
+  constructor({clientId, clientSecret} = {}) {
     if (!clientId || !clientSecret) {
       throw new Error(`No clientId or clientSecret found.`)
     }
@@ -31,19 +30,11 @@ module.exports = class AniListApi {
      * @type {string}
      */
     AniListApi._clientId = clientId
-
     /**
      * Your client secret.
      * @type {string}
      */
     AniListApi._clientSecret = clientSecret
-
-    /**
-     * Show extra output.
-     * @type {boolean}
-     */
-    AniListApi._debug = debug
-
     /**
      * The default helper, without authentication.
      * @type {Helper}
@@ -53,32 +44,27 @@ module.exports = class AniListApi {
         'Context-Type': 'application/x-www-form-urlencoded'
       },
       json: true
-    }, AniListApi._debug)
-
+    })
     /**
      * The anime section of th module.
      * @type {Anime}
      */
     this.anime = new Anime(AniListApi._helper)
-
     /**
      * The characters section of th module.
      * @type {Characters}
      */
     this.characters = new Characters(AniListApi._helper)
-
     /**
      * The manga section of th module.
      * @type {Manga}
      */
     this.manga = new Manga(AniListApi._helper)
-
     /**
      * The staff section of th module.
      * @type {Staff}
      */
     this.staff = new Staff(AniListApi._helper)
-
     /**
      * The studio section of th module.
      * @type {Studio}
@@ -109,7 +95,7 @@ module.exports = class AniListApi {
           'Authorization': `${res.token_type} ${res.access_token}`
         },
         json: true
-      }, AniListApi._debug)
+      })
 
       this.anime = new Anime(helper)
       this.characters = new Characters(helper)
