@@ -28,7 +28,7 @@
     "anilist",
     "api"
   ],
-  "main": "index.js",
+  "main": "./lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ChrisAlderson/anilist-api-pt.git"
