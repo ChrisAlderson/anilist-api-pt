@@ -1,12 +1,17 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-unused-expressions */
-const { expect } = require('chai')
+const executeTests = require('./executeTests')
 const AnilistApi = require('../../lib')
+const { tags } = require('../../lib/queries')
 
 describe('Tag', () => {
   const { tag } = new AnilistApi()
 
-  it('should be a dummy test', () => {
-    expect(true).to.be.true
-  })
+  const cases = [{
+    title: 'should get a list of tags',
+    method: tag.getTagCollection()
+  }, {
+    title: 'should get a list of tags with a custom GraphQL query',
+    method: tag.getTagCollection(tags)
+  }]
+  cases.map(executeTests)
 })

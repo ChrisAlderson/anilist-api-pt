@@ -1,12 +1,17 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-unused-expressions */
-const { expect } = require('chai')
+const executeTests = require('./executeTests')
 const AnilistApi = require('../../lib')
+const { genreList } = require('../../lib/queries')
 
 describe('Genre', () => {
   const { genre } = new AnilistApi()
 
-  it('should be a dummy test', () => {
-    expect(true).to.be.true
-  })
+  const cases = [{
+    title: 'should get a genre list',
+    method: genre.getGenreList()
+  }, {
+    title: 'should get a genre list with a custom GraphQL query',
+    method: genre.getGenreList(genreList)
+  }]
+  cases.map(executeTests)
 })
