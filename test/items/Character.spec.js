@@ -11,22 +11,43 @@ describe('Character', () => {
 
   const cases = [{
     title: 'should get a character page',
-    method: character.getCharacterPage(1)
+    method: character.getCharacterPage.bind(character),
+    args: {
+      id: 1
+    }
   }, {
     title: 'should get a character page with a custom GraphQL query',
-    method: character.getCharacterPage(1, characterIdPage)
+    method: character.getCharacterPage.bind(character),
+    args: {
+      id: 1,
+      query: characterIdPage
+    }
   }, {
     title: 'should get a character by id',
-    method: character.getCharacter(22037)
+    method: character.getCharacter.bind(character),
+    args: {
+      id: 22037
+    }
   }, {
     title: 'should get a character by id with a custom GraphQL query',
-    method: character.getCharacter(22037, characterId)
+    method: character.getCharacter.bind(character),
+    args: {
+      id: 22037,
+      query: characterId
+    }
   }, {
     title: 'should search for a character',
-    method: character.searchCharacter('Hitagi Senjougahara')
+    method: character.searchCharacter.bind(character),
+    args: {
+      term: 'Hitagi Senjougahara'
+    }
   }, {
     title: 'should search for a character with a custom GraphQL query',
-    method: character.searchCharacter('Hitagi Senjougahara', characterSearch)
+    method: character.searchCharacter.bind(character),
+    args: {
+      term: 'Hitagi Senjougahara',
+      query: characterSearch
+    }
   }]
   cases.map(executeTests)
 })

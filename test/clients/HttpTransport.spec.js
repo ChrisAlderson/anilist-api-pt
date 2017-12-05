@@ -3,7 +3,7 @@
 const { expect } = require('chai')
 const { HttpTransport } = require('../../lib/clients')
 
-describe('HttpTransport', () => {
+describe.skip('HttpTransport', () => {
   let httpTransport
 
   before(() => {

@@ -8,10 +8,13 @@ describe('Tag', () => {
 
   const cases = [{
     title: 'should get a list of tags',
-    method: tag.getTagCollection()
+    method: tag.getTagCollection.bind(tag)
   }, {
     title: 'should get a list of tags with a custom GraphQL query',
-    method: tag.getTagCollection(tags)
+    method: tag.getTagCollection.bind(tag),
+    args: {
+      query: tags
+    }
   }]
   cases.map(executeTests)
 })

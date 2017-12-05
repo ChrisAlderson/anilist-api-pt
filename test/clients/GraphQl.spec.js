@@ -6,7 +6,7 @@ const {
   GraphQl
 } = require('../../lib/clients')
 
-describe('GraphQl', () => {
+describe.skip('GraphQl', () => {
   let graphQl
 
   before(() => {

@@ -3,7 +3,7 @@
 const { expect } = require('chai')
 const AnilistApi = require('../lib')
 
-describe('Genre', () => {
+describe.skip('AnilistApi', () => {
   const anilistApi = new AnilistApi()
 
   it('should be a dummy test', () => {

@@ -1,12 +1,24 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-unused-expressions */
-const { expect } = require('chai')
+const executeTests = require('./executeTests')
 const AnilistApi = require('../../lib')
+const { reviewId } = require('../../lib/queries')
 
 describe('Review', () => {
   const { review } = new AnilistApi()
 
-  it('should be a dummy test', () => {
-    expect(true).to.be.true
-  })
+  const cases = [{
+    title: 'should get a review',
+    method: review.getReview.bind(review),
+    args: {
+      id: 1
+    }
+  }, {
+    title: 'should get a review with a custom GraphQL query',
+    method: review.getReview.bind(review),
+    args: {
+      id: 1,
+      query: reviewId
+    }
+  }]
+  cases.map(executeTests)
 })
